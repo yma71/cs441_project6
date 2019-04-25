@@ -515,3 +515,175 @@ public class VariableManager {
         return null;
     }
 
+    private JSONArray changeGpsDateToJson() {
+        if(gpses.size() == sizeOfUpload) {
+            GpsJsonArray = null;
+            GpsJsonArray = new JSONArray();
+            for (int i = 0; i < gpses.size(); i++) {
+                gps_object = new JSONObject();
+                try {
+                    gps_object.put("UserID", gpses.get(i).getId());
+                    gps_object.put("Timestamp", gpses.get(i).getTimestamp());
+                    gps_object.put("Latitude", gpses.get(i).getLatitude());
+                    gps_object.put("Longitude", gpses.get(i).getLongitude());
+                    gps_object.put("Bearing", gpses.get(i).getBearing());
+                    gps_object.put("Speed", gpses.get(i).getSpeed());
+                    gps_object.put("Flag", gpses.get(i).getFlag());
+                    GpsJsonArray.put(gps_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return GpsJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeAcceDateToJson() {
+        if(acces.size() == sizeOfUpload) {
+            AcceJsonArray = null;
+            AcceJsonArray = new JSONArray();
+            for (int i = 0; i < acces.size(); i++) {
+                acce_object = new JSONObject();
+                try {
+                    acce_object.put("UserID", acces.get(i).getId());
+                    acce_object.put("Timestamp", acces.get(i).getTimestamp());
+                    acce_object.put("X", acces.get(i).getX());
+                    acce_object.put("Y", acces.get(i).getY());
+                    acce_object.put("Z", acces.get(i).getZ());
+                    AcceJsonArray.put(acce_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return AcceJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeGyroDateToJson() {
+        if(gyros.size() == sizeOfUpload) {
+            GyroJsonArray = null;
+            GyroJsonArray = new JSONArray();
+            for (int i = 0; i < gyros.size(); i++) {
+                gyro_object = new JSONObject();
+                try {
+                    gyro_object.put("UserID", gyros.get(i).getId());
+                    gyro_object.put("Timestamp", gyros.get(i).getTimestamp());
+                    gyro_object.put("X", gyros.get(i).getX());
+                    gyro_object.put("Y", gyros.get(i).getY());
+                    gyro_object.put("Z", gyros.get(i).getZ());
+                    GyroJsonArray.put(gyro_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return GyroJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeMotionDateToJson() {
+        if(motions.size() == sizeOfUpload) {
+            MotionJsonArray = null;
+            MotionJsonArray = new JSONArray();
+            for (int i = 0; i < motions.size(); i++) {
+                motion_object = new JSONObject();
+                try {
+                    motion_object.put("UserID", motions.get(i).getId());
+                    motion_object.put("Timestamp", motions.get(i).getTimestamp());
+                    motion_object.put("State", motions.get(i).getState());
+                    MotionJsonArray.put(motion_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return MotionJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeStepDateToJson() {
+        if(steps.size() == sizeOfUpload) {
+            StepJsonArray = null;
+            StepJsonArray = new JSONArray();
+            for (int i = 0; i < steps.size(); i++) {
+                step_object = new JSONObject();
+                try {
+                    step_object.put("UserID", steps.get(i).getId());
+                    step_object.put("Timestamp", steps.get(i).getTimestamp());
+                    step_object.put("Count", steps.get(i).getCount());
+                    StepJsonArray.put(step_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return StepJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeBatteryDateToJson() {
+        if(batteries.size() == sizeOfUpload) {
+            BatteryJsonArray = null;
+            BatteryJsonArray = new JSONArray();
+            for (int i = 0; i < batteries.size(); i++) {
+                battery_object = new JSONObject();
+                try {
+                    battery_object.put("UserID", batteries.get(i).getId());
+                    battery_object.put("Timestamp", batteries.get(i).getTimestamp());
+                    battery_object.put("Percentage", batteries.get(i).getPercentage());
+                    BatteryJsonArray.put(battery_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return BatteryJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeWiFiDateToJson() {
+        if(wifis.size() == sizeOfUpload) {
+            WiFiJsonArray = null;
+            WiFiJsonArray = new JSONArray();
+            for (int i = 0; i < wifis.size(); i++) {
+                wifi_object = new JSONObject();
+                try {
+                    wifi_object.put("UserID", wifis.get(i).getId());
+                    wifi_object.put("Timestamp", wifis.get(i).getTimestamp());
+                    wifi_object.put("State", wifis.get(i).getState());
+                    WiFiJsonArray.put(wifi_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return WiFiJsonArray;
+        }
+        else
+            return null;
+    }
+    private JSONArray changeMagneDateToJson() {
+        if(magnetometers.size() == sizeOfUpload) {
+            MagneJsonArray = null;
+            MagneJsonArray = new JSONArray();
+            for (int i = 0; i < magnetometers.size(); i++) {
+                magne_object = new JSONObject();
+                try {
+                    magne_object.put("UserID", magnetometers.get(i).getId());
+                    magne_object.put("Timestamp", magnetometers.get(i).getTimestamp());
+                    magne_object.put("X", magnetometers.get(i).getX());
+                    magne_object.put("Y", magnetometers.get(i).getY());
+                    magne_object.put("Z", magnetometers.get(i).getZ());
+                    MagneJsonArray.put(magne_object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return MagneJsonArray;
+        }
+        else
+            return null;
+    }
+
+}
