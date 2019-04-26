@@ -685,5 +685,54 @@ public class VariableManager {
         else
             return null;
     }
-
+    private JSONArray changeParkingDateToJson() {
+        ParkJsonArray=null;
+        ParkJsonArray = new JSONArray();
+        for (int i = 0; i < parkinglots.size(); i++) {
+            park_object = new JSONObject();
+            try {
+                park_object.put("UserID", parkinglots.get(i).getId());
+                park_object.put("Timestamp", parkinglots.get(i).getTimestamp());
+                park_object.put("State", parkinglots.get(i).getState());
+                ParkJsonArray.put(park_object);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return ParkJsonArray;
+    }
+    
+    private int post_data(String url, JSONArray json){
+        if(json != null) {
+            int StatusCode = 0;
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpContext httpContext = new BasicHttpContext();
+            HttpPost httpPost = new HttpPost(url);
+            
+            try {
+                
+                StringEntity se = new StringEntity(json.toString());
+                
+                httpPost.setEntity(se);
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-type", "application/json");
+                
+                
+                HttpResponse response = httpClient.execute(httpPost, httpContext); //execute your request and parse response
+                HttpEntity entity = response.getEntity();
+                
+                String jsonString = EntityUtils.toString(entity); //if response in JSON format
+                Log.e("response: ", jsonString);
+                
+                StatusCode = response.getStatusLine().getStatusCode();
+                Log.e("status code: ", "" + StatusCode);
+            } catch (Exception e) {
+                //            e.printStackTrace();
+                Log.e("no wifi exception: ", e.toString());
+            }
+            return StatusCode;
+        }
+        else
+            return 0;
+    }
 }
